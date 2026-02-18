@@ -154,7 +154,7 @@ jobs:
               if: hashFiles('**/angular.json') != ''
               run: |
                   echo "IMAGE_FULL_SHA=$(echo '${{ env.IMAGE_FULL_SHA }}' | tr '[:upper:]' '[:lower:]')" >> $GITHUB_ENV
-                  echo "IMAGE_FULL_SHA = ${{ env.IMAGE_FULL_SHA }}"
+                  echo "IMAGE_FULL_SHA = ${{ env.IMAGE_FULL_SHA }}
                   echo "IMAGE_FULL=$(echo '${{ env.IMAGE_FULL }}' | tr '[:upper:]' '[:lower:]')" >> $GITHUB_ENV
                   echo "IMAGE_FULL = ${{ env.IMAGE_FULL }}
 
