@@ -153,8 +153,10 @@ jobs:
             - name: To Lowercase (for Docker tags)
               if: hashFiles('**/angular.json') != ''
               run: |
-                  IMAGE_FULL_LOWERCASE=$(echo "${IMAGE_FULL}" | tr '[:upper:]' '[:lower:]')
-                  echo "IMAGE_FULL_LOWERCASE=${IMAGE_FULL_LOWERCASE}" >> $GITHUB_ENV
+                  echo "IMAGE_FULL_SHA=$(echo '${{ env.IMAGE_FULL_SHA }}' | tr '[:upper:]' '[:lower:]')" >> $GITHUB_ENV
+                  echo "IMAGE_FULL_SHA = ${{ env.IMAGE_FULL_SHA }}"
+                  echo "IMAGE_FULL=$(echo '${{ env.IMAGE_FULL }}' | tr '[:upper:]' '[:lower:]')" >> $GITHUB_ENV
+                  echo "IMAGE_FULL = ${{ env.IMAGE_FULL }}
 
             - name: Build and push Docker image
               if: hashFiles('**/angular.json') != ''
@@ -165,4 +167,4 @@ jobs:
                   push: true
                   tags: |
                       ${{ env.IMAGE_FULL_SHA }}
-                      ${{ env.IMAGE_FULL_LOWERCASE }}
+                      ${{ env.IMAGE_FULL }}
