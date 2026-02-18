@@ -92,3 +92,5 @@ jobs:
         with:
           files: |
             build/test-results/test/**/*.xml
+            test-results/**/*.xml
+            
