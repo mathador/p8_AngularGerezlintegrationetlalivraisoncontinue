@@ -153,7 +153,7 @@ jobs:
             - name: To Lowercase (for Docker tags)
               if: hashFiles('**/angular.json') != ''
               run: |
-                  IMAGE_FULL_LOWERCASE=$(echo "${IMAGE_FULL_SHA}" | tr '[:upper:]' '[:lower:]')
+                  IMAGE_FULL_LOWERCASE=$(echo "${IMAGE_FULL}" | tr '[:upper:]' '[:lower:]')
                   echo "IMAGE_FULL_LOWERCASE=${IMAGE_FULL_LOWERCASE}" >> $GITHUB_ENV
 
             - name: Build and push Docker image
