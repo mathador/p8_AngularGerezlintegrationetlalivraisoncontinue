@@ -13,7 +13,7 @@ permissions:
 #
 env:
     REGISTRY: ghcr.io
-    IMAGE_NAME: ${{ github.repository }}
+    IMAGE_NAME: ${{ toLower(github.repository) }}
 
 jobs:
     # Pour l'instant 2 jobs : build et test
