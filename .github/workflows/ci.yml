@@ -110,10 +110,6 @@ jobs:
             - name: Checkout
               uses: actions/checkout@v4
 
-            - name: Convert IMAGE_NAME to lowercase
-                run: |
-                    echo "IMAGE_NAME=$(echo '${{ env.IMAGE_NAME }}' | tr '[:upper:]' '[:lower:]')" >> $GITHUB_ENV
-
             - name: Set up Node.js
               if: hashFiles('**/angular.json') != ''
               uses: actions/setup-node@v4
@@ -154,6 +150,12 @@ jobs:
                   username: ${{ github.actor }}
                   password: ${{ secrets.GITHUB_TOKEN }}
 
+            - name: To Lowercase (for Docker tags)
+              if: hashFiles('**/angular.json') != ''
+              run: |
+                  IMAGE_FULL_LOWERCASE=$(echo "${IMAGE_FULL_SHA}" | tr '[:upper:]' '[:lower:]')
+                  echo "IMAGE_FULL_LOWERCASE=${IMAGE_FULL_LOWERCASE}" >> $GITHUB_ENV
+
             - name: Build and push Docker image
               if: hashFiles('**/angular.json') != ''
               uses: docker/build-push-action@v4
@@ -163,4 +165,4 @@ jobs:
                   push: true
                   tags: |
                       ${{ env.IMAGE_FULL_SHA }}
-                      ${{ env.IMAGE_FULL }}
+                      ${{ env.IMAGE_FULL_LOWERCASE }}
