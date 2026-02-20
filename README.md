@@ -52,6 +52,13 @@ npm pack
 
 This will create a distributable package containing the compiled code and necessary assets.
 
+For tests coverage run:
+
+```bash
+npx ng test --watch=false --code-coverage
+```
+
+
 ### Deploy on nginx
 
 To deploy application on nginx web server with docker you can use nginx config located in the `nginx` folder. This one configure the root application folder in the `/app` folder.
