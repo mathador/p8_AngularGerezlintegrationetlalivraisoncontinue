@@ -121,7 +121,11 @@ Un fichier `docker-compose.yml` simple est fourni pour builder et exécuter l'ap
 Build et démarrage :
 
 ```bash
-docker-compose up --build -d
+docker build -t olympic-app
+```
+ou bien 
+```bash
+docker composer up
 ```
 
 Arrêter et supprimer le conteneur :
