@@ -129,3 +129,34 @@ Arrêter et supprimer le conteneur :
 ```bash
 docker-compose down
 ```
+
+### 3 A partir du registry github
+
+Pour monter et lancer l'image du build dans un conteneur
+```bash
+docker run -d -p 8282:80 --name OlympicParticipationTracker ghcr.io/mathador/p8_angulargerezlintegrationetlalivraisoncontinue:test-03352
+```
+
+```bash
+curl -I http://localhost:8282
+```
+HTTP/1.1 200 OK
+Server: nginx/1.25.5
+Date: Thu, 26 Feb 2026 17:12:56 GMT
+Content-Type: text/html
+Content-Length: 510
+Last-Modified: Tue, 24 Feb 2026 12:34:38 GMT
+Connection: keep-alive
+ETag: "699d9ade-1fe"
+Expires: Wed, 26 Feb 2025 17:12:56 GMT
+Cache-Control: no-cache
+Pragma: no-cache
+Cache-Control: public
+Accept-Ranges: bytes
+
+Pour arrêter et supprimer le conteneur
+```bash
+docker stop OlympicParticipationTracker
+docker rm OlympicParticipationTracker
+```
+
